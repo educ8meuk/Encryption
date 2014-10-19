@@ -1,0 +1,46 @@
+#define new function called 'encrypt'
+def encrypt():
+
+    #use 'for' loop to read every character in variable 'a' as 'i'
+    for i in a:
+        #change each character in the loop to its ascii value with 'ord()' and store to variable 'i'
+        i = ord(i)
+        #append variable 'i' to the list 'a_l'
+        a_l.append(i)
+
+    #use 'for' loop to read each element in the list 'a_l'
+    for i in a_l:
+        #use 'if' to check if the ascii value = 32 as this is ascii for space - it will set 'space' as 'space'
+        if (i == 32):
+            i = 32
+        #use elif to check if ascii value is less than 120 'x' - if so then shift up by 3
+        elif (i < 120):
+                i = i + 3
+        #use elif to check if value is greater than 119 'w' - if so then shift down by 23 to remain with the alphabet (simulates shift up by 3 for x, y and z)
+        elif (i > 119):
+                i = i - 23
+        #change the ascii value back to its equivalent text character and store it to variable 'i'
+        i = chr(i)
+        #append the new value to a new list 'a_le'
+        a_le.append(i)
+
+    #set the variable 'encrypted' as global to allow interaction with elements outside the function
+    global encrypted
+    #join each element in the list 'a_le' into a string using a for loop
+    encrypted = "".join(str(i) for i in a_le)
+    
+#print user prompt to enter phrase
+print ("enter the sentence or phrase you would like to encrypt using a Caeser cipher ")
+
+#store user input to variable 'a'
+a = input().lower
+
+#create blank lists ready to have elements appended to them
+a_l = []
+a_le = []
+
+#run the function 'encrypt'
+encrypt()
+
+#print a message to the user with the variable 'encrypted' to display the encrypted phrase
+print("Your encrypted sentence / phrase is: " + encrypted)
